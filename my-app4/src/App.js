@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import ColorBrightnessSelector from './ColorBrightnessSelector.js';
+import ColorPicker from './ColorPicker2.js';
+import { SketchPicker } from 'react-color';
+import HueSaturationBrightnessPicker from './HueSaturationBrightnessPicker';
+import LedGrid from './LedGrid';
 
 function App() {
+  const [color, setColor] = useState({ r: 200, g: 100, b: 100});
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Sam Code
-          Edit <code>src/App.js</code> and save to reload.
+          Sam LED Code
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <HueSaturationBrightnessPicker rgb={color} setRgb={setColor}/>
+      <div className="color-picker-container">
+        <LedGrid currentColor={color} />
+      </div>
     </div>
   );
 }

@@ -1,0 +1,45 @@
+/* HueSaturationBrightnessPicker.css */
+.color-picker-container {
+  font-family: sans-serif;
+  padding: 20px;
+  min-width: 80xh;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+.picker-layout {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.wheel {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+}
+
+.brightness-slider-container {
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.brightness-slider {
+  writing-mode: bt-lr; /* vertical */
+  -webkit-appearance: slider-vertical;
+  width: 20px;
+  height: 200px;
+  cursor: pointer;
+}
+
+.preview {
+  height: 80px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
