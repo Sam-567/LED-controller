@@ -5,6 +5,7 @@ import ColorPicker from './ColorPicker2.js';
 import { SketchPicker } from 'react-color';
 import HueSaturationBrightnessPicker from './HueSaturationBrightnessPicker';
 import LedGrid from './LedGrid';
+import SwatchManager from './swatch.js'; // Added import
 
 // Number of grids to allow
 const NUM_GRIDS = 3;
@@ -42,7 +43,15 @@ function App() {
           Sam LED Code
         </p>
       </header>
-      <HueSaturationBrightnessPicker rgb={color} setRgb={setColor}/>
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+        <SwatchManager
+          currentColor={color}
+          onSelect={setColor}
+        />
+        <div>
+          <HueSaturationBrightnessPicker rgb={color} setRgb={setColor}/>
+        </div>
+      </div>
       <div style={{ marginBottom: 16 }}>
         <span style={{ marginRight: 8 }}>Select Grid:</span>
         {grids.map((_, idx) => (
