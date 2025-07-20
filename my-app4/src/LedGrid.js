@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 
-const LedGrid = ({ rows = 20, cols = 6, currentColor }) => {
+const LedGrid = ({
+  rows = 20,
+  cols = 6,
+  currentColor,
+  grid,
+  setGrid,
+}) => {
   const blankColor = { r: 0, g: 0, b: 0 };
-
-  const [grid, setGrid] = useState(
-    Array.from({ length: rows }, () =>
-      Array.from({ length: cols }, () => blankColor)
-    )
-  );
 
   const isPainting = useRef(false);
 
@@ -38,42 +38,40 @@ const LedGrid = ({ rows = 20, cols = 6, currentColor }) => {
     isPainting.current = false;
   };
 
-const gridRef = useRef(null);
-const currentColorRef = useRef(currentColor);
+  const gridRef = useRef(null);
+  const currentColorRef = useRef(currentColor);
 
-useEffect(() => {
-  currentColorRef.current = currentColor;
-}, [currentColor]);
+  useEffect(() => {
+    currentColorRef.current = currentColor;
+  }, [currentColor]);
 
-useEffect(() => {
-  const handleTouchMove = (e) => {
-    if (!isPainting.current) return;
+  useEffect(() => {
+    const handleTouchMove = (e) => {
+      if (!isPainting.current) return;
 
-    const touch = e.touches[0];
-    const target = document.elementFromPoint(touch.clientX, touch.clientY);
-    // Only act if dragging over the grid
-    if (gridRef.current?.contains(target)) {
-      const row = target?.dataset?.row;
-      const col = target?.dataset?.col;
-      if (row && col) {
-        paintCell(parseInt(row), parseInt(col), currentColorRef.current);
-        //e.preventDefault(); // ✅ only prevents scroll while touching inside grid
+      const touch = e.touches[0];
+      const target = document.elementFromPoint(touch.clientX, touch.clientY);
+      if (gridRef.current?.contains(target)) {
+        const row = target?.dataset?.row;
+        const col = target?.dataset?.col;
+        if (row && col) {
+          paintCell(parseInt(row), parseInt(col), currentColorRef.current);
+        }
       }
-    }
-  };
+    };
 
-  const handleTouchEnd = () => {
-    isPainting.current = false;
-  };
+    const handleTouchEnd = () => {
+      isPainting.current = false;
+    };
 
-  window.addEventListener('touchmove', handleTouchMove, { passive: false });
-  window.addEventListener('touchend', handleTouchEnd);
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+    window.addEventListener('touchend', handleTouchEnd);
 
-  return () => {
-    window.removeEventListener('touchmove', handleTouchMove);
-    window.removeEventListener('touchend', handleTouchEnd);
-  };
-}, []);
+    return () => {
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [grid, currentColor, paintCell]);
 
   const handleTouchStart = (row, col) => {
     isPainting.current = true;
@@ -134,7 +132,6 @@ const styles = {
     justifyContent: 'center',
     marginBottom: '16px',
     userSelect: 'none',
-    //touchAction: 'none', // ✅ Prevent default gestures on mobile
   },
   led: {
     width: 30,
@@ -164,3 +161,4 @@ const styles = {
 };
 
 export default LedGrid;
+
