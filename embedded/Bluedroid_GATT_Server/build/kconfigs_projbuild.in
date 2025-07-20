@@ -1,0 +1,6 @@
+source "E:/Coding/esp/v5.4.2/esp-idf/components/bootloader/Kconfig.projbuild"
+source "E:/Coding/esp/v5.4.2/esp-idf/components/esp_app_format/Kconfig.projbuild"
+source "E:/Coding/esp/v5.4.2/esp-idf/components/esp_rom/Kconfig.projbuild"
+source "E:/Coding/esp/v5.4.2/esp-idf/components/esptool_py/Kconfig.projbuild"
+source "E:/Coding/esp/v5.4.2/esp-idf/components/partition_table/Kconfig.projbuild"
+source "C:/Users/Sam/Documents/GitHub/LED controller/embedded/Bluedroid_GATT_Server/main/Kconfig.projbuild"
