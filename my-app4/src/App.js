@@ -23,4 +23,16 @@ function App() {
   );
 }
 
+const styles = { 
+    ProgramButton: {
+    padding: '8px 16px',
+    borderRadius: '4px',
+    background: '#444',
+    color: 'white',
+    border: 'none',
+    cursor: 'pointer',
+    fontSize: '14px',
+  },
+}
+
 export default App;

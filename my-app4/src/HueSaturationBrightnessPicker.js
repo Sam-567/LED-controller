@@ -8,29 +8,26 @@ import LedGrid from './LedGrid';
 
 const HueSaturationBrightnessPicker = ({rgb, setRgb}) => {
 
-
   const finalColor = chroma.rgb(rgb.r, rgb.g ,rgb.b).hex();
-
-
 
   return (
     
     <div className="color-picker-container" style={styles.controls}>
-
+     <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
         <SwatchManager
         currentColor={rgb}
         onSelect={(color) => {
-            console.log("Test" + color);
             setRgb(color);
         }}
         />
-        <div>
-      <h2>🎨 Color Picker</h2>
+    <div>
+    <h2>🎨 Color Picker</h2>
 
-      <div className="picker-layout"
-            style={{justifyContent: 'center',}}>
+    <div className="picker-layout"
+        style={{justifyContent: 'center',}}>
         <RgbColorPicker color={rgb} onChange={setRgb} className="wheel" />
-      </div>
+    </div>
+    </div>
         </div>
       {/*<div
         className="preview"

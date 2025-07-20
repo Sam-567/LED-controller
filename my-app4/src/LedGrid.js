@@ -94,7 +94,7 @@ useEffect(() => {
 
   return (
     <div
-      style={{ textAlign: 'center', marginTop: '24px' }}
+      style={{ textAlign: 'center', marginTop: '2px' }}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
     >
@@ -120,6 +120,7 @@ useEffect(() => {
       <div style={styles.controls}>
         <button onClick={handleReset} style={styles.button}>🔄 Reset</button>
         <button onClick={handleFill} style={styles.button}>🎨 Fill All</button>
+        <button style={styles.button}> Program </button>
       </div>
     </div>
   );
