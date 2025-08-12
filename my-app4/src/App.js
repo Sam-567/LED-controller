@@ -20,8 +20,24 @@ function createBlankGrid(rows, cols) {
 }
 
 function App() {
-  const [color, setColor] = useState({ r: 200, g: 100, b: 100 });
 
+  const [swatches, setSwatches] = useState([
+    { r: 255, g: 0, b: 0 }, { r: 255, g: 255, b: 0 },
+    { r: 0, g: 255, b: 0 }, { r: 0, g: 255, b: 255 },
+    { r: 0, g: 0, b: 255 }, { r: 255, g: 0, b: 255 },]);
+
+  const isDuplicate = (color) =>
+    swatches.some(
+      (c) => c.r === color.r && c.g === color.g && c.b === color.b
+    );
+
+  const addSwatch = () => {
+    if (!isDuplicate(color)) {
+      setSwatches([...swatches, color]);
+    }
+  };
+
+  const [color, setColor] = useState({ r: 200, g: 100, b: 100 });
   // Array of grid states
   const [grids, setGrids] = useState(
     Array.from({ length: NUM_GRIDS }, () => createBlankGrid(GRID_ROWS, GRID_COLS))
@@ -31,6 +47,7 @@ function App() {
 
   // Handler to update a grid's state
   const setGridAtIndex = (idx, newGrid) => {
+    addSwatch();
     setGrids(grids =>
       grids.map((g, i) => (i === idx ? newGrid : g))
     );
@@ -47,6 +64,8 @@ function App() {
         <SwatchManager
           currentColor={color}
           onSelect={setColor}
+          swatches={swatches}
+          addSwatch={addSwatch}
         />
         <div>
           <HueSaturationBrightnessPicker rgb={color} setRgb={setColor}/>
@@ -81,6 +100,10 @@ function App() {
             );
           }}
         />
+      </div>
+      <div>
+        <button style={styles.ProgramButton}> Rainbow Mode </button>
+        <button style={styles.ProgramButton}> Twinkle Mode </button>
       </div>
     </div>
   );

@@ -11,21 +11,11 @@ const HueSaturationBrightnessPicker = ({rgb, setRgb}) => {
 
   return (
     <div className="color-picker-container" style={styles.controls}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-        <div>
-          <h2>🎨 Color Picker</h2>
-          <div className="picker-layout"
-            style={{justifyContent: 'center',}}>
-            <RgbColorPicker color={rgb} onChange={setRgb} className="wheel" />
-          </div>
-        </div>
+      <h2>🎨 Color Picker</h2>
+      <div className="picker-layout"
+        style={{justifyContent: 'center',}}>
+        <RgbColorPicker color={rgb} onChange={setRgb} className="wheel" />
       </div>
-      {/*<div
-        className="preview"
-        style={{ backgroundColor: finalColor }}
-      >
-        <p>Selected Color: <code>{finalColor}</code></p>
-      </div>*/}
     </div>
   );
 };
@@ -34,7 +24,6 @@ export default HueSaturationBrightnessPicker;
 
 const styles = {
       controls: {
-    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     gap: '10px',

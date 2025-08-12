@@ -1,27 +1,11 @@
 import React, { useState } from 'react';
 
-const SwatchManager = ({ currentColor, onSelect }) => {
-  const [swatches, setSwatches] = useState([
-    { r: 255, g: 0, b: 0 }, { r: 255, g: 255, b: 0 },
-    { r: 0, g: 255, b: 0 }, { r: 0, g: 255, b: 255 },
-    { r: 0, g: 0, b: 255 }, { r: 255, g: 0, b: 255 },]);
-
-  // Check if swatch (as RGB object) is already in the list
-  const isDuplicate = (color) =>
-    swatches.some(
-      (c) => c.r === color.r && c.g === color.g && c.b === color.b
-    );
-
-  const addSwatch = () => {
-    if (!isDuplicate(currentColor)) {
-      setSwatches([...swatches, currentColor]);
-    }
-  };
+const SwatchManager = ({ currentColor, onSelect, swatches, addSwatch }) => {
 
   const toCssRgb = ({ r, g, b }) => `rgb(${r}, ${g}, ${b})`;
 
   return (
-    <div>
+    <div styles={{marginTop: '20px'}}>
       <h2>
       <button onClick={addSwatch} style={styles.button}>
         ➕ Add to Favorites
