@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/LED-controller/my-app4/build/static/css/main.e36a3589.css",
-    "main.js": "/LED-controller/my-app4/build/static/js/main.5c440319.js",
+    "main.css": "/LED-controller/my-app4/build/static/css/main.8210e5a3.css",
+    "main.js": "/LED-controller/my-app4/build/static/js/main.1ff2cb62.js",
     "static/js/453.871187fa.chunk.js": "/LED-controller/my-app4/build/static/js/453.871187fa.chunk.js",
     "service-worker.js": "/LED-controller/my-app4/build/service-worker.js",
     "index.html": "/LED-controller/my-app4/build/index.html",
-    "main.e36a3589.css.map": "/LED-controller/my-app4/build/static/css/main.e36a3589.css.map",
-    "main.5c440319.js.map": "/LED-controller/my-app4/build/static/js/main.5c440319.js.map",
+    "main.8210e5a3.css.map": "/LED-controller/my-app4/build/static/css/main.8210e5a3.css.map",
+    "main.1ff2cb62.js.map": "/LED-controller/my-app4/build/static/js/main.1ff2cb62.js.map",
     "453.871187fa.chunk.js.map": "/LED-controller/my-app4/build/static/js/453.871187fa.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e36a3589.css",
-    "static/js/main.5c440319.js"
+    "static/css/main.8210e5a3.css",
+    "static/js/main.1ff2cb62.js"
   ]
 }

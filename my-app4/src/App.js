@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 import ColorBrightnessSelector from './ColorBrightnessSelector.js';
 import ColorPicker from './ColorPicker2.js';
 import { SketchPicker } from 'react-color';
 import HueSaturationBrightnessPicker from './HueSaturationBrightnessPicker';
 import LedGrid from './LedGrid';
-import SwatchManager from './swatch.js'; // Added import
+import SwatchManager from './swatch.js';
+import BleLedController from './BluetoothController.js';
 
 // Number of grids to allow
 const NUM_GRIDS = 3;
@@ -20,6 +21,20 @@ function createBlankGrid(rows, cols) {
 }
 
 function App() {
+  const bleControllerRef = useRef(null);
+    console.log("Y")
+
+  const handleConnectBluetooth = async () => {
+    console.log("X")
+    if (!bleControllerRef.current) {
+      bleControllerRef.current = new BleLedController();
+    }
+    await bleControllerRef.current.connect();
+    // Optionally send current color after connecting
+    console.log("X")
+    bleControllerRef.current.sendColor(grids[selectedGrid]);
+  };
+
 
   const [swatches, setSwatches] = useState([
     { r: 255, g: 0, b: 0 }, { r: 255, g: 255, b: 0 },
@@ -60,6 +75,7 @@ function App() {
           Sam LED Code
         </p>
       </header>
+
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
         <SwatchManager
           currentColor={color}
@@ -71,6 +87,11 @@ function App() {
           <HueSaturationBrightnessPicker rgb={color} setRgb={setColor}/>
         </div>
       </div>
+
+      <div style={{ marginBottom: 16 }}>
+        <button style={styles.button} onClick={handleConnectBluetooth}> Connect </button>
+      </div>
+
       <div style={{ marginBottom: 16 }}>
         <span style={{ marginRight: 8 }}>Select Grid:</span>
         {grids.map((_, idx) => (
@@ -87,6 +108,7 @@ function App() {
           </button>
         ))}
       </div>
+
       <div className="color-picker-container">
         <LedGrid
           currentColor={color}
@@ -99,11 +121,12 @@ function App() {
             : updater
             );
           }}
+          program={() => bleControllerRef.current.sendColor(grids[selectedGrid])}
         />
       </div>
       <div>
-        <button style={styles.ProgramButton}> Rainbow Mode </button>
-        <button style={styles.ProgramButton}> Twinkle Mode </button>
+        <button style={styles.button}> Rainbow Mode </button>
+        <button style={styles.button}> Twinkle Mode </button>
       </div>
     </div>
   );
@@ -111,6 +134,15 @@ function App() {
 
 const styles = { 
     ProgramButton: {
+    padding: '8px 16px',
+    borderRadius: '4px',
+    background: '#444',
+    color: 'white',
+    border: 'none',
+    cursor: 'pointer',
+    fontSize: '14px',
+  },
+    button: {
     padding: '8px 16px',
     borderRadius: '4px',
     background: '#444',
