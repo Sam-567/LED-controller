@@ -10,8 +10,8 @@ import BleLedController from './BluetoothController.js';
 
 // Number of grids to allow
 const NUM_GRIDS = 3;
-const GRID_ROWS = 20;
-const GRID_COLS = 6;
+const GRID_ROWS = 26;
+const GRID_COLS = 14;
 const BLANK_COLOR = { r: 100, g: 0, b: 0 };
 
 function createBlankGrid(rows, cols) {
@@ -20,9 +20,14 @@ function createBlankGrid(rows, cols) {
   );
 }
 
+function readGrid() {
+ var result = document.cookie.match(new RegExp('grid=([^;]+)'));
+ result && (result = JSON.parse(result[1]));
+ return result;}
+
 function App() {
   const bleControllerRef = useRef(null);
-    console.log("Y")
+    console.log("Yes")
 
   const handleConnectBluetooth = async () => {
     console.log("X")
@@ -66,6 +71,9 @@ function App() {
     setGrids(grids =>
       grids.map((g, i) => (i === idx ? newGrid : g))
     );
+
+    document.cookie = ["grid=",JSON.stringify(newGrid)].join('')
+    console.log("adding cookie") 
   };
 
   return (
@@ -121,7 +129,7 @@ function App() {
             : updater
             );
           }}
-          program={() => bleControllerRef.current.sendColor(grids[selectedGrid])}
+          program={() => {bleControllerRef.current && bleControllerRef.current.sendColor(grids[selectedGrid])}}
         />
       </div>
       <div>

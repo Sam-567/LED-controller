@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/LED-controller/my-app4/build/static/css/main.8210e5a3.css",
-    "main.js": "/LED-controller/my-app4/build/static/js/main.1ff2cb62.js",
+    "main.js": "/LED-controller/my-app4/build/static/js/main.13aa40b0.js",
     "static/js/453.871187fa.chunk.js": "/LED-controller/my-app4/build/static/js/453.871187fa.chunk.js",
     "service-worker.js": "/LED-controller/my-app4/build/service-worker.js",
     "index.html": "/LED-controller/my-app4/build/index.html",
     "main.8210e5a3.css.map": "/LED-controller/my-app4/build/static/css/main.8210e5a3.css.map",
-    "main.1ff2cb62.js.map": "/LED-controller/my-app4/build/static/js/main.1ff2cb62.js.map",
+    "main.13aa40b0.js.map": "/LED-controller/my-app4/build/static/js/main.13aa40b0.js.map",
     "453.871187fa.chunk.js.map": "/LED-controller/my-app4/build/static/js/453.871187fa.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8210e5a3.css",
-    "static/js/main.1ff2cb62.js"
+    "static/js/main.13aa40b0.js"
   ]
 }

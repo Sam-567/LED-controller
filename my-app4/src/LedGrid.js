@@ -1,8 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 
+const width = 14
+const height = 26
+
 const LedGrid = ({
-  rows = 20,
-  cols = 6,
+  rows = height,
+  cols = width,
   currentColor,
   grid,
   setGrid,
@@ -128,7 +131,7 @@ const LedGrid = ({
 const styles = {
   grid: {
     display: 'grid',
-    gridTemplateColumns: `repeat(6, 30px)`,
+    gridTemplateColumns: `repeat(${width}, 30px)`,
     gap: '6px',
     justifyContent: 'center',
     marginBottom: '16px',
