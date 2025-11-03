@@ -12,11 +12,10 @@ export default class BleLedController {
   }
 
   async connect() {
-    /*this.device = await navigator.bluetooth.requestDevice({
+    this.device = await navigator.bluetooth.requestDevice({
       filters: [{ services: [SERVICE_UUID] }],
       optionalServices: [SERVICE_UUID]
-    });*/
-    this.device = await navigator.bluetooth.requestDevice({acceptAllDevices: true, optionalServices: [SERVICE_UUID]})
+    });
     console.log(this.device)
     this.server = await this.device.gatt.connect();
     const service = await this.server.getPrimaryService(SERVICE_UUID);

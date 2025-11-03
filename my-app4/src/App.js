@@ -15,9 +15,18 @@ const GRID_COLS = 14;
 const BLANK_COLOR = { r: 100, g: 0, b: 0 };
 
 function createBlankGrid(rows, cols) {
-  return Array.from({ length: rows }, () =>
-    Array.from({ length: cols }, () => BLANK_COLOR)
-  );
+    console.log("???????")
+    let grid = JSON.parse(localStorage.getItem("grid"))
+    //let grid = 0
+    if(grid) {
+        console.log("existing gfrid found")
+    }
+    if(!grid) {
+        console.log("No existing grid found\n");
+        grid = Array.from({ length: rows }, () =>
+             Array.from({ length: cols }, () => BLANK_COLOR) );
+    }
+  return grid
 }
 
 function readGrid() {
@@ -72,8 +81,7 @@ function App() {
       grids.map((g, i) => (i === idx ? newGrid : g))
     );
 
-    document.cookie = ["grid=",JSON.stringify(newGrid)].join('')
-    console.log("adding cookie") 
+    localStorage.setItem("grid", JSON.stringify(newGrid))
   };
 
   return (
