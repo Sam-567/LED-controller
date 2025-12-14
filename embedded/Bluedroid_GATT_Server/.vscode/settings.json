@@ -12,7 +12,7 @@
     "IDF_CCACHE_ENABLE": "1",
     "ESP_ROM_ELF_DIR": "C:\\Espressif\\tools\\esp-rom-elfs\\20230320/",
     "IDF_TARGET": "esp32c3"
-  },
+},
   "clangd.path": "E:\\Espressif\\tools\\esp-clang\\esp-18.1.2_20240912\\esp-clang\\bin\\clangd.exe",
   "clangd.arguments": [
     "--background-index",
@@ -21,7 +21,7 @@
   ],
   "idf.openOcdConfigs": [
     "board/esp32c3-builtin.cfg"
-  ],
+],
   "idf.portWin": "COM3",
   "idf.flashType": "JTAG"
 }

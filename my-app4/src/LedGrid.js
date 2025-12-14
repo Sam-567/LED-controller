@@ -9,7 +9,6 @@ const LedGrid = ({
   currentColor,
   grid,
   setGrid,
-  program,
 }) => {
   const blankColor = { r: 0, g: 0, b: 0 };
 
@@ -122,7 +121,6 @@ const LedGrid = ({
       <div style={styles.controls}>
         <button onClick={handleReset} style={styles.button}>🔄 Reset</button>
         <button onClick={handleFill} style={styles.button}>🎨 Fill All</button>
-        <button onClick={program} style={styles.button}> Program </button>
       </div>
     </div>
   );

@@ -26,41 +26,7 @@ export default class BleLedController {
     return this.device && this.device.gatt.connected;
   }
 
- 
-  async sendColor(grid) {
-    console.log("send color data a")
-    console.log(grid)
-    //const flat = grid.flat().map(pixel => [pixel.g, pixel.r, pixel.b]).flat();
-    const flat = (() => {
-        let direction = 0;
-      const rows = grid.length;
-      const cols = (rows && grid[0].length) || 0;
-      const out = [];
-      for (let c = cols-1; c >= 0; c--) {
-        for (let r = 0; r < rows; r++) {
-            if (direction) {
-                const p = (grid[rows-1-r] && grid[rows-1-r][c]) || { r: 0, g: 0, b: 0 };
-                out.push(p.g, p.r, p.b);
-            } else {
-                const p = (grid[r] && grid[r][c]) || { r: 0, g: 0, b: 0 };
-                out.push(p.g, p.r, p.b);
-            }
-        }
-        direction = !direction;
-      }
-      return out;
-    })();
-    console.log("flat")
-    console.log(flat)
-    const data = new Uint8Array(flat);
-    console.log("data")
-    console.log(data)
-    if (!this.characteristic) return;
-    console.log("characteristic")
-    console.log(this.characteristic)
-    // Send as 3 bytes: [r, g, b]
-    //await this.characteristic.writeValue(data);
-
+  async sendData(data) {
     //Data must be fragmented
     console.log(data.length)
     for (let startLed = 0; startLed < data.length / 3; startLed += LEDS_TO_SEND) {
