@@ -32,16 +32,57 @@ const BlinkUI = () => {
             swatches={swatches}
             addSwatch={addSwatch}
             />
+            <div style={{ width: 200 }} />
             <HueSaturationBrightnessPicker rgb={color} setRgb={setColor}/>
+            <div
+              key={0}
+              title={`rgb(255,255,0)`}
+              style={{ ...sty.swatchNoClick, backgroundColor: `rgb(255,255,0)` }}
+            />
+            <div>
+                <h2> Selected colours </h2>
+            </div>
         </div>
-        <button style={styles.button}> Blink Mode </button>
+        <h1 style={{ marginTop: 20 }}> Effects </h1>
+        {/* Blink, twinkle, stripe, solid, rainbow */}
+        <button style={styles.button}> Blink </button>
+        <button style={styles.button}> Twinkle </button>
+        <button style={styles.button}> Solid </button>
+        <button style={styles.button}> Rainbow </button>
+        <button style={styles.button}> Sound reactive </button>
+
+        <h1 style={{ marginTop: 20 }}> Patterns </h1>
+        <button style={styles.button}> Striped </button>
+        <button style={styles.button}> Spots </button>
         <br/>
-        <button style={styles.button}> Rainbow Mode </button>
-        <button style={styles.button}> Twinkle Mode </button>
     </div>
 
       
   )
 }
+
+const sty = {
+  button: {
+    padding: '6px 12px',
+    borderRadius: '4px',
+    background: '#444',
+    color: 'white',
+    border: 'none',
+    cursor: 'pointer',
+    marginBottom: 12,
+  },
+  swatchList: {
+    display: 'flex',
+    gap: 10,
+    flexWrap: 'wrap',
+  },
+  swatchNoClick: {
+    width: 32,
+    height: 32,
+    borderRadius: 4,
+    border: '1px solid #ccc',
+    //cursor: 'pointer',
+  },
+};
 
 export default BlinkUI;

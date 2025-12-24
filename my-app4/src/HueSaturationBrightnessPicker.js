@@ -10,12 +10,9 @@ const HueSaturationBrightnessPicker = ({rgb, setRgb}) => {
   const finalColor = chroma.rgb(rgb.r, rgb.g ,rgb.b).hex();
 
   return (
-    <div className="color-picker-container">
+    <div>
       <h2>🎨 Color Picker</h2>
-      <div className="picker-layout"
-        style={{justifyContent: 'center',}}>
-        <RgbColorPicker color={rgb} onChange={setRgb} className="wheel" />
-      </div>
+      <RgbColorPicker color={rgb} onChange={setRgb} className="wheel" />
     </div>
   );
 };
