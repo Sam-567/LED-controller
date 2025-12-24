@@ -38,10 +38,11 @@ const GridPainter = forwardRef(({
     // Which grid is selected
     const [selectedGrid, setSelectedGrid] = useState(0);
 
+    const inputRef = useRef(null);
     useImperativeHandle(ref, () => ({
       getEncodedGrid: () => {
         const grid = grids[selectedGrid];
-        return encodeGrid(grid); // or your encode function
+        return inputRef.current.encodeGrid(grid); // or your encode function
       },
       getGrid: () => grids[selectedGrid],
       getGridAtIndex: (idx) => grids[idx],

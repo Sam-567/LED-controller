@@ -10,7 +10,7 @@ const HueSaturationBrightnessPicker = ({rgb, setRgb}) => {
   const finalColor = chroma.rgb(rgb.r, rgb.g ,rgb.b).hex();
 
   return (
-    <div className="color-picker-container" style={styles.controls}>
+    <div className="color-picker-container">
       <h2>🎨 Color Picker</h2>
       <div className="picker-layout"
         style={{justifyContent: 'center',}}>
@@ -21,12 +21,3 @@ const HueSaturationBrightnessPicker = ({rgb, setRgb}) => {
 };
 
 export default HueSaturationBrightnessPicker;
-
-const styles = {
-      controls: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '10px',
-    marginTop: '12px',
-  }
-}
