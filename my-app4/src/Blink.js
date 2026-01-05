@@ -22,9 +22,11 @@ const BlinkUI = () => {
   };
 
   const [color, setColor] = useState({ r: 200, g: 100, b: 100 });
+  const [showPicker, setShowPicker] = useState(true);
 
   return (
     <div>
+        {showPicker &&
         <div style={{ display: 'flex', justify_content: 'center' , alignItems: 'flex-start', gap: 10 }}>
             <SwatchManager
             currentColor={color}
@@ -34,15 +36,36 @@ const BlinkUI = () => {
             />
             <div style={{ width: 200 }} />
             <HueSaturationBrightnessPicker rgb={color} setRgb={setColor}/>
-            <div
-              key={0}
-              title={`rgb(255,255,0)`}
-              style={{ ...sty.swatchNoClick, backgroundColor: `rgb(255,255,0)` }}
-            />
             <div>
-                <h2> Selected colours </h2>
+            
+            </div>
+        </div>}
+        
+        <div style={{ display: 'flex', justify_content: 'center' , alignItems: 'flex-start', gap: 10 }}>
+            <div
+              style={{
+              width: 80,
+              height: 80,
+              borderRadius: 8,
+              border: '1px solid #ccc',
+              background: 'rgba(255, 136, 0, 1)'
+              }}
+            >
+                Primary Color 
+            </div>
+            <div
+              style={{
+              width: 80,
+              height: 80,
+              borderRadius: 8,
+              border: '1px solid #ccc',
+              background: 'rgba(43, 255, 0, 1)'
+              }}
+            >
+                Secondary Color 
             </div>
         </div>
+
         <h1 style={{ marginTop: 20 }}> Effects </h1>
         {/* Blink, twinkle, stripe, solid, rainbow */}
         <button style={styles.button}> Blink </button>
