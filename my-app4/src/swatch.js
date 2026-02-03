@@ -42,6 +42,7 @@ const styles = {
   },
   swatchList: {
     display: 'flex',
+    width: 230,
     gap: 10,
     flexWrap: 'wrap',
   },

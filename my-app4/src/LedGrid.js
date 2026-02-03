@@ -9,6 +9,8 @@ const LedGrid = ({
   currentColor,
   grid,
   setGrid,
+  orientation = 'portrait',
+  editeable = true,
 }) => {
   const blankColor = { r: 0, g: 0, b: 0 };
 
@@ -118,10 +120,10 @@ const LedGrid = ({
         )}
       </div>
 
-      <div style={styles.controls}>
+      {editeable && <div style={styles.controls}>
         <button onClick={handleReset} style={styles.button}>🔄 Reset</button>
         <button onClick={handleFill} style={styles.button}>🎨 Fill All</button>
-      </div>
+      </div>}
     </div>
   );
 };
@@ -129,15 +131,15 @@ const LedGrid = ({
 const styles = {
   grid: {
     display: 'grid',
-    gridTemplateColumns: `repeat(${width}, 30px)`,
+    gridTemplateColumns: `repeat(${width}, 10px)`,
     gap: '6px',
     justifyContent: 'center',
     marginBottom: '16px',
     userSelect: 'none',
   },
   led: {
-    width: 30,
-    height: 30,
+    width: 10,
+    height: 10,
     borderRadius: 4,
     border: '1px solid #aaa',
     cursor: 'pointer',
