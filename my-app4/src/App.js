@@ -35,7 +35,7 @@ function App() {
   function LoadGrid(rows, cols) {
     let grid = JSON.parse(localStorage.getItem("grid"))
     if(grid) {
-        console.log("existing gfrid found")
+        console.log("existing grid found")
     }
     if(!grid) {
         console.log("No existing grid found\n");
@@ -68,7 +68,7 @@ function App() {
       <h1>Tail 1</h1>
 
       <div style={{ maxWidth: '800px', margin: 'auto' }}>
-        {true && <BlinkUI />}
+        {true && <BlinkUI grid={grids[0]} setGrid={setGrids[0]}/>}
         {false && <GridPainter ref={gridPainterRef} NUM_GRIDS={NUM_GRIDS} GRID_ROWS={GRID_ROWS} GRID_COLS={GRID_COLS}/>}
       </div>
 

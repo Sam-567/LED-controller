@@ -4,7 +4,7 @@ import SwatchManager from './swatch.js';
 import styles from './styles.js';
 
 
-const BlinkUI = () => {
+const BlinkUI = ({grid, setGrid}) => {
   const [swatches, setSwatches] = useState([
     { r: 255, g: 0, b: 0 }, { r: 255, g: 255, b: 0 },
     { r: 0, g: 255, b: 0 }, { r: 0, g: 255, b: 255 },
@@ -24,6 +24,24 @@ const BlinkUI = () => {
   const [color, setColor] = useState({ r: 200, g: 100, b: 100 });
   const [showPicker, setShowPicker] = useState(false);
   
+  function applyStripeEffect(colour1, colour2, setGrid, grid) {
+    const stripeWidth = 2; // Width of each stripe
+
+    console.log("Grid before applying stripe effect:");
+    console.log(grid)
+    console.log(setGrid)
+
+
+    if (!grid) return;
+
+    setGrid(grid.map((row, rowIndex) =>
+      row.map((cell, colIndex) => {
+        const stripeIndex = Math.floor(colIndex / stripeWidth);
+        return stripeIndex % 2 === 0 ? colour1 : colour2;
+      })
+    )
+    )
+  }
 
   return (
     <div>
@@ -46,7 +64,7 @@ const BlinkUI = () => {
         </div>
         </div>}
         
-        <div style={{ display: 'flex', justify_content: 'center' , alignItems: 'flex-start', gap: 10 }}>
+        <div style={{ display: 'flex', justify_content: 'center' , gap: 10 }}>
             <div
               style={{
               width: 80,
@@ -73,19 +91,22 @@ const BlinkUI = () => {
             </div>
         </div>
 
-        <div>
-            <h1 style={{ marginTop: 20 }}> Effects </h1>
+        <div style={{ fontSize: 26, marginTop: 20 }}>
+            <b>Effects </b>
             {/* Blink, twinkle, stripe, solid, rainbow */}
             <button style={styles.button}> Blink </button>
             <button style={styles.button}> Twinkle </button>
             <button style={styles.button}> Solid </button>
-            <button style={styles.button}> Rainbow </button>
             <button style={styles.button}> Sound reactive </button>
         </div>
 
-        <h1 style={{ marginTop: 20 }}> Patterns </h1>
-        <button style={styles.button}> Striped </button>
-        <button style={styles.button}> Spots </button>
+        <div style={{ fontSize: 26, marginTop: 20 }}>
+             <b>Patterns </b>
+            <button style={styles.button} onClick={() => applyStripeEffect("blue", "green", setGrid, grid)}> Striped </button>
+            <button style={styles.button}> Spots </button>
+            <button style={styles.button}> Rainbow </button>
+            <button style={styles.button}> Custom </button>
+        </div>
         <br/>
     </div>
 
